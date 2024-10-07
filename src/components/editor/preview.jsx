@@ -35,7 +35,7 @@ export default function Preview({
 
               </div>
 
-            <div className='w-full flex justify-center'>
+            <div className='w-full flex flex-col items-center space-y-4'>
                     <div className="relative h-96 w-1/3">
                         <video
                             src={file?file:vid}
@@ -48,12 +48,12 @@ export default function Preview({
                             prod.hotspots
                             .filter(
                                 (spot) =>
-                                Math.abs(spot.time - currentTime) < 1
+                                Math.abs(spot.time - currentTime) < 0.8
                             )
                             .map((spot, index) => (
                                 <div
                                 key={`${prodIndex}-${index}`}
-                                className="absolute bg-blue-500 rounded-full cursor-pointer"
+                                className='hotspot cursor-pointer hover:bg-green-700'
                                 style={{
                                     left: `${spot.x}%`,
                                     top: `${spot.y}%`,
@@ -65,17 +65,12 @@ export default function Preview({
                                 ></div>
                             ))
                         )}
-                    </div>
+                     </div>
 
-                    {activeProduct && (
-                    <div className="mt-4 p-4 bg-gray-200">
-                        <h5>Product: {activeProduct.title}</h5>
-                        <p>Price: {activeProduct.price}</p>
-                        <p>{activeProduct.desc}</p>
-                        <a href={activeProduct.link} target="_blank" rel="noopener noreferrer">
-                        View Product
-                        </a>
-                    </div>
+                {activeProduct && (
+                      <Product
+                        item={activeProduct} 
+                      />
                     )}
          </div>
          </div>
@@ -95,3 +90,30 @@ export default function Preview({
     </div>
   )
 }
+
+
+const Product=({item})=>{
+    return(
+       <div className='flex items-center justify-between border shadow-lg px-4 py-2 w-[300px] '>
+             <div className='flex space-x-4'>
+                   <img 
+                     src={item?.img}
+                     className="h-10 w-10 rounded-sm"
+                   />
+                  <div className='flex flex-col'>
+                      <p>{item?.title}</p>
+                      <p className='text-xs'>{item?.desc?.slice(0,50)}...</p>   
+                  </div>
+             </div>
+             <div className='flex flex-col'>
+                 <div className='flex items-center items-center space-x-4' >
+                     <p>${item?.price}</p>
+                </div>
+                
+                <a href={item?.link}>
+                    <p className='text-xs text-blue-600 hover:text-green-400'>View product</p>
+                 </a>
+             </div>
+       </div>
+    )
+ }

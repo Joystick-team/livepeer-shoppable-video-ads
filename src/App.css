@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.hotspot {
+    position: absolute;
+    background-color:white; /* Make it semi-transparent */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    transform: translate(-50%, -50%);
+    animation: beacon 2s infinite ease-out; /* Add beacon animation */
+  }
+  
+  @keyframes beacon {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2); /* Increase size */
+      opacity: 0; /* Fade out */
+    }
+  }
+  

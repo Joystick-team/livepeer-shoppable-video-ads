@@ -16,8 +16,6 @@ export default function Home() {
               <Link to="~ads">         
                     <h5 className='hover:text-green-400 hover:underline'>Client side Ads ~ IMA </h5>
               </Link>
-       
-
           </div>
 
     </div>
