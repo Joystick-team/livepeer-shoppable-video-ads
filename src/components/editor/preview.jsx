@@ -91,29 +91,29 @@ export default function Preview({
   )
 }
 
-
-const Product=({item})=>{
-    return(
-       <div className='flex items-center justify-between border shadow-lg px-4 py-2 w-[300px] '>
-             <div className='flex space-x-4'>
-                   <img 
-                     src={item?.img}
-                     className="h-10 w-10 rounded-sm"
-                   />
-                  <div className='flex flex-col'>
-                      <p>{item?.title}</p>
-                      <p className='text-xs'>{item?.desc?.slice(0,50)}...</p>   
-                  </div>
-             </div>
-             <div className='flex flex-col'>
-                 <div className='flex items-center items-center space-x-4' >
-                     <p>${item?.price}</p>
-                </div>
-                
-                <a href={item?.link}>
-                    <p className='text-xs text-blue-600 hover:text-green-400'>View product</p>
-                 </a>
-             </div>
-       </div>
-    )
- }
+const Product = ({ item }) => {
+    return (
+        <div className='absolute top-[10%] right-[23%] flex flex-col border shadow-lg px-4 py-2 bg-white w-[250px] z-50 space-y-3'>
+            <div className='flex justify-between w-full text-black items-center'>
+                    <div className='flex space-x-4'>
+                        <img src={item?.img} className="h-12 w-12 rounded-sm" />
+                        <div className='flex flex-col'>
+                            <p>{item?.title}</p>
+                            <p className='text-xs'>{item?.desc?.slice(0,50)}...</p>
+                        </div>
+                    </div>
+                    <div className='flex flex-col'>
+                        <p>${item?.price}</p>
+                    </div>       
+            </div>
+               
+                    
+                    <button className=' font-semibold text-white hover:text-blue-800  bg-green-500 px-6 py-2'>
+                       <a href={item?.link}>
+                         Shop now
+                        </a>
+                    </button>
+               
+        </div>
+    );
+};
