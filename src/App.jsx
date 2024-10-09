@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import Studio from './studio';
 import Editor from './components/editor';
 import AdClient from './components/adclient';
 import Home from './home';
